@@ -13,9 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AttractionsRouteImport } from './routes/attractions'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RequestQuoteRouteImport } from './routes/request-quote'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ToursRouteImport } from './routes/tours'
 
 const IndexRoute = IndexRouteImport.update({
@@ -38,9 +41,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RequestQuoteRoute = RequestQuoteRouteImport.update({
@@ -51,6 +64,11 @@ const RequestQuoteRoute = RequestQuoteRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToursRoute = ToursRouteImport.update({
@@ -64,9 +82,12 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/attractions': typeof AttractionsRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/gallery': typeof GalleryRoute
+  '/privacy': typeof PrivacyRoute
   '/request-quote': typeof RequestQuoteRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/tours': typeof ToursRoute
 }
 export interface FileRoutesByTo {
@@ -74,9 +95,12 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/attractions': typeof AttractionsRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/gallery': typeof GalleryRoute
+  '/privacy': typeof PrivacyRoute
   '/request-quote': typeof RequestQuoteRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/tours': typeof ToursRoute
 }
 export interface FileRoutesById {
@@ -85,9 +109,12 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/attractions': typeof AttractionsRoute
   '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
   '/gallery': typeof GalleryRoute
+  '/privacy': typeof PrivacyRoute
   '/request-quote': typeof RequestQuoteRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/tours': typeof ToursRoute
 }
 export interface FileRouteTypes {
@@ -97,9 +124,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/attractions'
     | '/contact'
+    | '/cookies'
     | '/gallery'
+    | '/privacy'
     | '/request-quote'
     | '/services'
+    | '/terms'
     | '/tours'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -107,9 +137,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/attractions'
     | '/contact'
+    | '/cookies'
     | '/gallery'
+    | '/privacy'
     | '/request-quote'
     | '/services'
+    | '/terms'
     | '/tours'
   id:
     | '__root__'
@@ -117,9 +150,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/attractions'
     | '/contact'
+    | '/cookies'
     | '/gallery'
+    | '/privacy'
     | '/request-quote'
     | '/services'
+    | '/terms'
     | '/tours'
   fileRoutesById: FileRoutesById
 }
@@ -128,9 +164,12 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AttractionsRoute: typeof AttractionsRoute
   ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
   GalleryRoute: typeof GalleryRoute
+  PrivacyRoute: typeof PrivacyRoute
   RequestQuoteRoute: typeof RequestQuoteRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   ToursRoute: typeof ToursRoute
 }
 
@@ -164,11 +203,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/request-quote': {
@@ -183,6 +236,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tours': {
@@ -200,9 +260,12 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AttractionsRoute: AttractionsRoute,
   ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
   GalleryRoute: GalleryRoute,
+  PrivacyRoute: PrivacyRoute,
   RequestQuoteRoute: RequestQuoteRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   ToursRoute: ToursRoute,
 }
 export const routeTree = rootRouteImport
