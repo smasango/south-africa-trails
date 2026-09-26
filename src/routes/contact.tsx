@@ -1,0 +1,8 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import { EnquiryForm } from "@/components/enquiry-form";
+import { PageHero } from "@/components/site-layout";
+import { pageHead } from "@/components/seo";
+import { BUSINESS, whatsappUrl } from "@/config/business";
+export const Route=createFileRoute("/contact")({head:()=>pageHead("Contact BT New Adventure Tours","Contact BT New Adventure Tours by phone, email or WhatsApp to discuss a tailored South African journey.","/contact"),component:Contact});
+function Contact(){return <><PageHero eyebrow="Contact us" title="Let’s Talk About Your Journey" text="Tell us where you would like to go, what you would like to experience and the support you need."/><section className="py-20"><div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[.7fr_1.3fr] lg:px-8"><aside><h2 className="font-display text-3xl font-bold">BT NEW ADVENTURE TOURS</h2><div className="mt-7 grid gap-4"><a href={`tel:${BUSINESS.phoneHref}`} className="flex items-center gap-4 border border-border p-4 font-bold"><Phone className="text-green"/>{BUSINESS.phone}</a><a href={`mailto:${BUSINESS.email}`} className="flex items-center gap-4 border border-border p-4 font-bold"><Mail className="text-red"/><span className="break-all">{BUSINESS.email}</span></a><a href={whatsappUrl()} target="_blank" rel="noreferrer" className="flex items-center gap-4 border border-border p-4 font-bold"><MessageCircle className="text-green"/>WhatsApp us</a></div><p className="mt-6 text-sm text-muted-foreground">Based in South Africa. No walk-in address has been provided.</p></aside><EnquiryForm/></div></section></>}
