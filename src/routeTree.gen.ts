@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AttractionsRouteImport } from './routes/attractions'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as RequestQuoteRouteImport } from './routes/request-quote'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ToursRouteImport } from './routes/tours'
 
@@ -22,6 +26,26 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttractionsRoute = AttractionsRouteImport.update({
+  id: '/attractions',
+  path: '/attractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RequestQuoteRoute = RequestQuoteRouteImport.update({
+  id: '/request-quote',
+  path: '/request-quote',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -38,12 +62,20 @@ const ToursRoute = ToursRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/attractions': typeof AttractionsRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/request-quote': typeof RequestQuoteRoute
   '/services': typeof ServicesRoute
   '/tours': typeof ToursRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/attractions': typeof AttractionsRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/request-quote': typeof RequestQuoteRoute
   '/services': typeof ServicesRoute
   '/tours': typeof ToursRoute
 }
@@ -51,20 +83,53 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/attractions': typeof AttractionsRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
+  '/request-quote': typeof RequestQuoteRoute
   '/services': typeof ServicesRoute
   '/tours': typeof ToursRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/services' | '/tours'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/attractions'
+    | '/contact'
+    | '/gallery'
+    | '/request-quote'
+    | '/services'
+    | '/tours'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/services' | '/tours'
-  id: '__root__' | '/' | '/about' | '/services' | '/tours'
+  to:
+    | '/'
+    | '/about'
+    | '/attractions'
+    | '/contact'
+    | '/gallery'
+    | '/request-quote'
+    | '/services'
+    | '/tours'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/attractions'
+    | '/contact'
+    | '/gallery'
+    | '/request-quote'
+    | '/services'
+    | '/tours'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AttractionsRoute: typeof AttractionsRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
+  RequestQuoteRoute: typeof RequestQuoteRoute
   ServicesRoute: typeof ServicesRoute
   ToursRoute: typeof ToursRoute
 }
@@ -83,6 +148,34 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attractions': {
+      id: '/attractions'
+      path: '/attractions'
+      fullPath: '/attractions'
+      preLoaderRoute: typeof AttractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/request-quote': {
+      id: '/request-quote'
+      path: '/request-quote'
+      fullPath: '/request-quote'
+      preLoaderRoute: typeof RequestQuoteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -105,6 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AttractionsRoute: AttractionsRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
+  RequestQuoteRoute: RequestQuoteRoute,
   ServicesRoute: ServicesRoute,
   ToursRoute: ToursRoute,
 }

@@ -1,29 +1,37 @@
-# Welcome to your Lovable project
+# BT New Adventure Tours
 
-This project was built with [Lovable](https://lovable.dev).
+A responsive multi-page website for BT New Adventure Tours, built with TanStack Start, React, TypeScript and Tailwind CSS.
 
-## Build with Lovable
+## Run locally
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+1. Install Bun from https://bun.sh
+2. Clone this repository and open its folder.
+3. Run `bun install`.
+4. Run `bun run dev`.
+5. Open the local address shown in the terminal.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+For a production build, run `bun run build`. The deployable output is generated in `.output/`.
 
-## Development
+## Edit business information
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Update `src/config/business.ts`. The company name, taglines, telephone number, email, website and WhatsApp number are centralised there.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+## Edit tours, attractions and services
 
-## Built with
+Update `src/data/site-data.ts`. Keep descriptions factual and do not add unsupported awards, reviews, statistics or qualifications.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Replace photographs
+
+Site image files are stored as Lovable CDN pointer files in `src/assets/`. Upload replacement media through Lovable Assets, then update the relevant import and `.url` reference in `src/data/site-data.ts`. The supplied photographs are owned/provided by the client; no external stock imagery is used.
+
+## Forms
+
+Forms currently validate in the browser and show a confirmation state. Before accepting live enquiries, connect submissions to a secure form receiver or email service and update the privacy policy.
+
+## GitHub
+
+Create an empty GitHub repository, then connect this Lovable project through Lovable's GitHub integration. If working outside Lovable, add the remote supplied by GitHub and push the main branch. Never commit `.env` files, private keys or passwords.
+
+## Deployment
+
+See `DEPLOYMENT.md` for Truehost South Africa instructions.

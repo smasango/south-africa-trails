@@ -178,3 +178,11 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+@utility prose-content {
+  margin-inline: auto;
+  max-width: 52rem;
+  padding: 5rem 1rem;
+  & h2 { margin-top: 2rem; font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; }
+  & p { margin-top: 0.75rem; line-height: 1.8; color: var(--muted-foreground); }
+}
