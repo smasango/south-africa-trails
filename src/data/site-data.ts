@@ -34,7 +34,7 @@ export const galleryImages = [
   { src: conversationAsset.url, alt: "Travellers sharing a cultural conversation", caption: "Connecting through local experiences" },
   { src: vehicleAsset.url, alt: "Guests travelling together in a tour vehicle", caption: "Travelling together in comfort" },
   { src: mealAsset.url, alt: "A tour group enjoying a meal together", caption: "Time to relax and connect" },
-];
+] as const;
 
 export const experiences = [
   { title: "Johannesburg & Soweto", region: "Gauteng", description: "Explore Johannesburg’s history, culture and vibrant urban experiences.", image: sowetoAsset.url },

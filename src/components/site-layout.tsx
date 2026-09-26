@@ -35,7 +35,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <button type="button" onClick={() => setOpen(!open)} className="ml-auto inline-flex size-11 items-center justify-center rounded-sm border border-border text-foreground xl:hidden" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? "Close menu" : "Open menu"}>{open ? <X/> : <Menu/>}</button>
       </div>
       {open && <nav id="mobile-menu" aria-label="Mobile navigation" className="border-t border-border bg-background px-4 py-4 xl:hidden">
-        <div className="mx-auto grid max-w-7xl gap-1">{nav.map(([label, to]) => <Link key={to} to={to} onClick={() => setOpen(false)} className="rounded-sm px-4 py-3 font-semibold hover:bg-muted data-[status=active]:bg-muted data-[status=active]:text-primary">{label}</Link>)}<ButtonLink to="/request-quote" onClick={() => setOpen(false)} className="mt-2">Plan Your Tour</ButtonLink></div>
+        <div className="mx-auto grid max-w-7xl gap-1">{nav.map(([label, to]) => <Link key={to} to={to} onClick={() => setOpen(false)} className="rounded-sm px-4 py-3 font-semibold hover:bg-muted data-[status=active]:bg-muted data-[status=active]:text-primary">{label}</Link>)}<ButtonLink to="/request-quote" className="mt-2">Plan Your Tour</ButtonLink></div>
       </nav>}
     </header>
     <main id="main-content">{children}</main>
