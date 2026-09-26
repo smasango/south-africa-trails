@@ -1,0 +1,8 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ServiceCard } from "@/components/cards";
+import { ButtonLink } from "@/components/button";
+import { PageHero, SectionHeading } from "@/components/site-layout";
+import { pageHead } from "@/components/seo";
+import { galleryImages, services } from "@/data/site-data";
+export const Route=createFileRoute("/services")({head:()=>pageHead("Tourism & Travel Services | BT New Adventure Tours","Tailored tours, safaris, accommodation, excursions, transfers, flights, airport shuttles and chauffeur services in South Africa.","/services"),component:Services});
+function Services(){return <><PageHero eyebrow="Travel services" title="One Journey. All The Support You Need." text="Combine the services that fit your plans, from accommodation and flight booking to tours, safaris and transfers." image={galleryImages[7].src}/><section className="py-20"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionHeading eyebrow="Our services" title="Flexible travel support" text="Every journey starts with a conversation. Choose what you need and we’ll help tailor the details."/><div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{services.map(s=><ServiceCard key={s.title} service={s}/>)}</div><div className="mt-14 bg-navy p-8 text-navy-foreground sm:p-12"><h2 className="font-display text-3xl font-bold">Not sure where to begin?</h2><p className="mt-3 max-w-2xl text-navy-foreground/75">Share your travel dates, interests and priorities. We’ll help identify the services that suit your trip.</p><ButtonLink to="/request-quote" variant="light" className="mt-6">Request a Tailored Tour</ButtonLink></div></div></section></>}

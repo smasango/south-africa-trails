@@ -1,0 +1,7 @@
+import { ArrowRight } from "lucide-react";
+import { ButtonLink } from "./button";
+import type { Service } from "@/data/site-data";
+
+export function ServiceCard({ service }: { service: Service }) { const Icon = service.icon; return <article className="group border-t-4 border-gold bg-card p-6 shadow-soft transition-transform hover:-translate-y-1"><div className="flex size-11 items-center justify-center rounded-sm bg-green-soft text-green"><Icon size={22}/></div><h3 className="mt-5 font-display text-xl font-bold">{service.title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p><ButtonLink to="/request-quote" variant="secondary" className="mt-5 border-0 p-0 shadow-none">Enquire <ArrowRight size={16}/></ButtonLink></article> }
+
+export function ExperienceCard({ title, region, description, image }: { title: string; region: string; description: string; image: string }) { return <article className="group overflow-hidden bg-card shadow-soft"><div className="aspect-[4/3] overflow-hidden"><img src={image} alt={`Tour experience: ${title}`} loading="lazy" className="size-full object-cover transition-transform duration-500 group-hover:scale-105"/></div><div className="p-6"><p className="text-xs font-bold uppercase text-red">{region}</p><h3 className="mt-2 font-display text-2xl font-bold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{description}</p><ButtonLink to="/request-quote" variant="secondary" className="mt-5">Add to My Trip</ButtonLink></div></article> }
