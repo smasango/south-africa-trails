@@ -1,0 +1,8 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Check } from "lucide-react";
+import { ButtonLink } from "@/components/button";
+import { PageHero, SectionHeading } from "@/components/site-layout";
+import { pageHead } from "@/components/seo";
+import { galleryImages, services } from "@/data/site-data";
+export const Route=createFileRoute("/about")({head:()=>pageHead("About Us | BT New Adventure Tours","Learn how BT New Adventure Tours helps local and international visitors experience South Africa their way.","/about"),component:About});
+function About(){return <><PageHero eyebrow="About us" title="Discover South Africa Your Way" text="A professional South African tourism company focused on tailored tours and practical travel services." image={galleryImages[3].src}/><section className="py-20"><div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><div><SectionHeading eyebrow="Our approach" title="Travel shaped around what matters to you" text="BT New Adventure Tours helps travellers experience South Africa through tailored tours and related travel services. We listen to your interests, timing and requirements, then help bring the journey together."/><ButtonLink to="/request-quote" className="mt-8">Tell Us Your Plans</ButtonLink></div><div className="bg-muted p-8"><h2 className="font-display text-2xl font-bold">What we can help arrange</h2><ul className="mt-6 grid gap-3 sm:grid-cols-2">{services.map(s=><li key={s.title} className="flex gap-3 text-sm"><Check className="mt-0.5 shrink-0 text-green" size={18}/>{s.title}</li>)}</ul></div></div></section></>}

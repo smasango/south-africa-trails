@@ -1,24 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowRight, CalendarDays, Compass, MapPinned, Sparkles } from "lucide-react";
+import logoAsset from "@/assets/logo.jpeg.asset.json";
+import { ButtonLink } from "@/components/button";
+import { ExperienceCard, ServiceCard } from "@/components/cards";
+import { SectionHeading } from "@/components/site-layout";
+import { pageHead } from "@/components/seo";
+import { BUSINESS } from "@/config/business";
+import { experiences, galleryImages, services } from "@/data/site-data";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({ ...pageHead("South Africa Tailored Tours | BT New Adventure Tours", "Discover tailored South Africa tours, safaris, accommodation, transfers and local experiences with BT New Adventure Tours.", "/"), scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "TouristInformationCenter"], name: BUSINESS.name, url: BUSINESS.website, telephone: BUSINESS.phone, email: BUSINESS.email, areaServed: "South Africa" }) }] }),
+  component: HomePage,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function HomePage() { const hero = galleryImages[1]; return <>
+  <section className="relative min-h-[720px] overflow-hidden lg:min-h-[760px]"><img src={hero.src} alt="A South African cultural experience hosted on a previous tour" className="absolute inset-0 size-full object-cover"/><div className="absolute inset-0 bg-hero-overlay"/><div className="relative mx-auto flex min-h-[720px] max-w-7xl items-end px-4 pb-20 pt-32 sm:px-6 lg:min-h-[760px] lg:px-8"><div className="max-w-4xl text-navy-foreground"><div className="mb-7 inline-block rounded-sm bg-background p-3 shadow-brand"><img src={logoAsset.url} alt="BT New Adventure Tours" className="h-32 w-auto sm:h-40"/></div><p className="section-kicker text-gold">Custom journeys across South Africa</p><h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] sm:text-6xl lg:text-7xl">Discover What South Africa Has To Offer As A Tourist Destination</h1><p className="mt-5 text-xl font-semibold text-navy-foreground/90">We tailor your tours to suit your travel requirements.</p><div className="mt-8 flex flex-wrap gap-3"><ButtonLink to="/tours" variant="light">Explore Our Tours <ArrowRight size={18}/></ButtonLink><ButtonLink to="/request-quote" className="bg-red hover:bg-red/90">Plan Your Journey</ButtonLink></div></div></div></section>
+  <section className="py-20 sm:py-28"><div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_.9fr] lg:px-8"><div><SectionHeading eyebrow="A journey made for you" title="Your Journey. Your Interests. Your Adventure." text="BT New Adventure Tours helps travellers discover South Africa’s beauty, history, culture, wildlife and everyday experiences. From tailored tours and safaris to accommodation, transfers and airport services, we make your journey easier to plan."/><p className="mt-6 font-display text-2xl font-bold text-red">We Tailor Your Tours...</p><ButtonLink to="/about" variant="secondary" className="mt-8">Meet BT New Adventure Tours</ButtonLink></div><div className="grid grid-cols-2 gap-3"><img src={galleryImages[0].src} alt={galleryImages[0].alt} className="h-64 w-full object-cover sm:h-80"/><img src={galleryImages[3].src} alt={galleryImages[3].alt} className="mt-10 h-64 w-full object-cover sm:h-80"/></div></div></section>
+  <section className="bg-muted py-20 sm:py-28"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionHeading eyebrow="Our services" title="Everything your South African journey needs" text="Choose a single service or bring them together in one tailored travel plan."/><div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">{services.map(s=><ServiceCard key={s.title} service={s}/>)}</div><div className="mt-10 text-center"><ButtonLink to="/services">View All Services</ButtonLink></div></div></section>
+  <section className="py-20 sm:py-28"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><SectionHeading eyebrow="Featured experiences" title="A starting point for your adventure" text="These are examples, not fixed packages. We can shape destinations and experiences around your plans."/><div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{experiences.map(e=><ExperienceCard key={e.title} {...e}/>)}</div></div></section>
+  <section className="bg-green py-20 text-primary-foreground"><div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><div><p className="section-kicker text-gold">Built around you</p><h2 className="mt-3 font-display text-4xl font-extrabold sm:text-5xl">We Tailor Your Tours</h2><p className="mt-5 max-w-xl text-lg leading-8 text-primary-foreground/85">Tell us what you want to experience, and we’ll help you create a South African journey around your interests, schedule and travel requirements.</p><ButtonLink to="/request-quote" variant="light" className="mt-8">Request a Tailored Tour</ButtonLink></div><ol className="grid gap-4 sm:grid-cols-2">{[["01","Tell Us Your Plans",CalendarDays],["02","Choose Your Experiences",Compass],["03","We Tailor Your Tour",Sparkles],["04","Enjoy Your Journey",MapPinned]].map(([n,t,Icon])=><li key={String(n)} className="border border-primary-foreground/25 p-5"><Icon size={24}/><span className="mt-5 block text-xs font-bold text-gold">STEP {n}</span><h3 className="mt-1 font-display text-xl font-bold">{t as string}</h3></li>)}</ol></div></section>
+  <section className="py-20 sm:py-28"><div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-3 lg:px-8"><article className="bg-navy p-8 text-navy-foreground lg:col-span-2"><p className="section-kicker text-gold">Safari journeys</p><h2 className="mt-3 font-display text-4xl font-extrabold">Experience South Africa’s Wildlife</h2><p className="mt-4 max-w-2xl text-navy-foreground/75">Include Kruger National Park, wildlife experiences and safari trips in a customised itinerary that can extend beyond the bush.</p><ButtonLink to="/request-quote" variant="light" className="mt-7">Plan Your Safari</ButtonLink></article><article className="border-t-4 border-red bg-card p-8 shadow-soft"><p className="section-kicker text-red">Easy arrivals</p><h2 className="mt-3 font-display text-3xl font-extrabold">Travel With Convenience</h2><p className="mt-4 text-muted-foreground">Arrange airport shuttles, transfers and chauffeur services around your itinerary.</p><ButtonLink to="/request-quote" className="mt-7">Book a Transfer</ButtonLink></article></div></section>
+  <section className="bg-muted py-20"><div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><img src={galleryImages[6].src} alt={galleryImages[6].alt} className="h-[440px] w-full object-cover"/><div><SectionHeading eyebrow="Conference travel" title="Make more of your time in South Africa" text="Visitors attending conferences can extend their trip with tailored tourism experiences before or after the event."/><ButtonLink to="/request-quote" className="mt-8">Plan Your Conference Extension</ButtonLink></div></div></section>
+</> }
