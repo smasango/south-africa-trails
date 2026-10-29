@@ -20,6 +20,7 @@ import { Route as RequestQuoteRouteImport } from './routes/request-quote'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ToursRouteImport } from './routes/tours'
+import { Route as ApiPublicBankAccountVerifyRouteImport } from './routes/api/public/bank-account-verify'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +77,12 @@ const ToursRoute = ToursRouteImport.update({
   path: '/tours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicBankAccountVerifyRoute =
+  ApiPublicBankAccountVerifyRouteImport.update({
+    id: '/api/public/bank-account-verify',
+    path: '/api/public/bank-account-verify',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/tours': typeof ToursRoute
+  '/api/public/bank-account-verify': typeof ApiPublicBankAccountVerifyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +110,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/tours': typeof ToursRoute
+  '/api/public/bank-account-verify': typeof ApiPublicBankAccountVerifyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +125,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/tours': typeof ToursRoute
+  '/api/public/bank-account-verify': typeof ApiPublicBankAccountVerifyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/tours'
+    | '/api/public/bank-account-verify'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/tours'
+    | '/api/public/bank-account-verify'
   id:
     | '__root__'
     | '/'
@@ -157,6 +169,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/tours'
+    | '/api/public/bank-account-verify'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +184,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   ToursRoute: typeof ToursRoute
+  ApiPublicBankAccountVerifyRoute: typeof ApiPublicBankAccountVerifyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +266,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ToursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/bank-account-verify': {
+      id: '/api/public/bank-account-verify'
+      path: '/api/public/bank-account-verify'
+      fullPath: '/api/public/bank-account-verify'
+      preLoaderRoute: typeof ApiPublicBankAccountVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -267,6 +288,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   ToursRoute: ToursRoute,
+  ApiPublicBankAccountVerifyRoute: ApiPublicBankAccountVerifyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
