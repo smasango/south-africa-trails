@@ -119,6 +119,10 @@ export const Route = createFileRoute('/api/public/bank-account-verify')({
               },
               { status: 503, headers: CORS_HEADERS },
             )
+          default:
+            return jsonError(
+              'scenario is required and must be one of: Verified, Failed, ManualReview, ServiceError.',
+            )
         }
       },
     },
