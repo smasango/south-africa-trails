@@ -12,3 +12,4 @@
 - Keep business identity and contact values in `src/config/business.ts` so every page and WhatsApp action stays consistent.
 - Keep repeatable tourism content in `src/data/site-data.ts` so tours, attractions, services, and gallery items remain easy to maintain.
 - Use TanStack file routes for every shareable website page so each page has independent metadata and direct URLs.
+- The mock bank Account Verification Service endpoint lives in `src/routes/api/public/bank-account-verify.ts` — public external-caller routes belong under `/api/public/*`, and this one must stay backend-only with `isMock: true` in every response.
